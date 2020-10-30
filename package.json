@@ -9,25 +9,17 @@
   },
   "repository": {
     "type": "git"
-    
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-   
-  },
-  
-  
+  "bugs": {},
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.21.8",
     "nodemon": "^2.0.6",
+    "pg": "^8.4.2",
     "sqlite3": "^5.0.0"
   }
 }
-
-
- 
- 
