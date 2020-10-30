@@ -24,7 +24,7 @@ production: {
   },
   migrations: {
     tablename: 'knex_migrations',
-    directory: "./migragtions"
+    directory: "./migrations"
   }
 
 }
