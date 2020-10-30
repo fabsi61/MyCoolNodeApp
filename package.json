@@ -1,0 +1,33 @@
+{
+  "name": "DB_BrettMTut",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+   
+  },
+  
+  
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.21.8",
+    "nodemon": "^2.0.6",
+    "sqlite3": "^5.0.0"
+  }
+}
+
+
+ 
+ 
