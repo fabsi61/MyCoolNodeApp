@@ -19,8 +19,10 @@ module.exports = {
 };
 //add, find, findbyId, remove, update
 async function add(lesson) {
-   const [id] = await  db('lessons').insert(lesson);
-   return id;
+  return await db('lessons').insert(lesson, ['id','name']);
+    //bei sqlite3:
+    //const [id] = await  db('lessons').insert(lesson);
+   //return findById(id);
 };
 
 function find(){
@@ -58,10 +60,14 @@ function findMessageById(id){
 };
 
 async function addMessage(message, lesson_id){
-    const [id] = await db('messages')
+  return await db('messages')
+  .where({lesson_id: lesson_id})
+  .insert(message, ['id']);
+    //für sqlite3:
+    /* const [id] = await db('messages')
         .where({lesson_id: lesson_id})
         .insert(message);
-    return findMessageById(id);
+    return findMessageById(id);*/
 };
 //2 tables werden gejoint
 function findLessonMessages(lesson_id){
