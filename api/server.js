@@ -7,7 +7,7 @@ const messagesRouter = require('../Routes/messages-routes');
 const usersRouter = require('../Routes/users-routes');
 const authRouter = require('../auth/auth-routes');
 const restricted = require('../auth/restricted-middleware');
-
+//nur so
 //const session = require('express-session');
 const server = express();
 server.use(helmet());
