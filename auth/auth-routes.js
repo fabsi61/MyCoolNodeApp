@@ -58,5 +58,18 @@ router.post('/login', (req,res) => {
     });
 });
 
+router.get('/logout', (req, res) => {
+    if(req.session){
+        req.session.destroy(error => {
+            if(error) {
+                res.status(500).json({message: 'You can check mout anytime you like but can never leave'});
+            }else{
+                res.status(200).json({message: 'Succesfully logged out'});
+            }
+        })
+    }else{
+        res.status(200).json({message: 'Not logged in'});
+    }
+});
 
 module.exports = router;
