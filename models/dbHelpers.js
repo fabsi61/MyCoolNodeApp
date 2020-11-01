@@ -15,7 +15,10 @@ module.exports = {
     addMessage,
     findLessonMessages,
     removeMessage,
-    messageUpdate
+    messageUpdate,
+    addUser,
+    findAllUsers,
+    findUserByUsername
 };
 //add, find, findbyId, remove, update
 async function add(lesson) {
@@ -99,3 +102,15 @@ function messageUpdate(id, changes){
         })
     )
 };
+
+async function addUser(user) {
+    return await db('users').insert(user, ['id'], ['username']);
+}
+
+function findAllUsers(){
+    return db('users');
+}
+
+function findUserByUsername(username) {
+    return db('users').where({username}).first();
+}
