@@ -1,17 +1,32 @@
 const express = require('express');
-
+const morgan = require('morgan');
+const helmet = require('helmet');
+const cors = require('cors');
 const lessonsRouter = require('../Routes/lessons-routes');
 const messagesRouter = require('../Routes/messages-routes');
 const usersRouter = require('../Routes/users-routes');
 const authRouter = require('../auth/auth-routes');
 const restricted = require('../auth/restricted-middleware');
 
-const session = require('express-session');
+//const session = require('express-session');
 const server = express();
-
+server.use(helmet());
+server.use(morgan('dev'));
+server.use(cors());
 server.use(express.json());
 
-const sessionConfig = {
+
+server.use('/api/auth', authRouter);
+server.get('/', (req, res) => {
+    res.json({message: 'I am index page'});
+});
+
+server.use('/api/lessons',restricted, lessonsRouter);
+server.use('/api/messages',restricted, messagesRouter);
+server.use('/api/users', restricted, usersRouter);
+
+module.exports = server;
+/*const sessionConfig = {
     name: 'monster',    // name of the cookie
     secret: process.env.SECRET,     // secret that makes the cookie effective
     cookie: {
@@ -25,13 +40,4 @@ const sessionConfig = {
 }
 
 server.use(session(sessionConfig));
-
-server.get('/', (req, res) => {
-    res.json({message: 'I am index page'});
-});
-server.use('/api/auth', authRouter);
-server.use('/api/lessons',restricted, lessonsRouter);
-server.use('/api/messages',restricted, messagesRouter);
-server.use('/api/users', restricted, usersRouter);
-
-module.exports = server;
+*/
